@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://xsd.propelorm.org/1.6/database.xsd" uri="xsd.propelorm.org/1.6/database.xsd"/>
+    <system systemId="http://xsd.propelorm.org/1.6/custom_datatypes.xsd" uri="xsd.propelorm.org/1.6/custom_datatypes.xsd"/>
+</catalog>

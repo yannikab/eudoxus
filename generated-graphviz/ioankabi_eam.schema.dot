@@ -1,0 +1,36 @@
+digraph G {
+nodegroup_tbl [label="{<table>group_tbl|<cols>group_id (INTEGER) [PK]\lalias (VARCHAR)\lname (VARCHAR)\l}", shape=record];
+nodeuser_tbl [label="{<table>user_tbl|<cols>user_id (INTEGER) [PK]\lusername (VARCHAR)\lpassword (CHAR)\lemail (VARCHAR)\l}", shape=record];
+nodeuserstudent_tbl [label="{<table>userstudent_tbl|<cols>user_id (INTEGER) [FK]\lgroup_id (INTEGER) [FK]\ldept_id (INTEGER) [FK]\lfirstname (VARCHAR)\llastname (VARCHAR)\l}", shape=record];
+nodeuserpublisher_tbl [label="{<table>userpublisher_tbl|<cols>user_id (INTEGER) [FK]\lgroup_id (INTEGER) [FK]\lpublisher_id (INTEGER) [FK]\l}", shape=record];
+nodeusersecretariat_tbl [label="{<table>usersecretariat_tbl|<cols>user_id (INTEGER) [FK]\lgroup_id (INTEGER) [FK]\ldept_id (INTEGER) [FK]\lfirstname (VARCHAR)\llastname (VARCHAR)\l}", shape=record];
+nodefaq_tbl [label="{<table>faq_tbl|<cols>group_id (INTEGER) [FK]\lindex (INTEGER) [PK]\lquestion (VARCHAR)\lanswer (LONGVARCHAR)\l}", shape=record];
+nodeinst_tbl [label="{<table>inst_tbl|<cols>inst_id (INTEGER) [PK]\lname (VARCHAR)\l}", shape=record];
+nodedept_tbl [label="{<table>dept_tbl|<cols>dept_id (INTEGER) [PK]\linst_id (INTEGER) [FK]\lname (VARCHAR)\l}", shape=record];
+nodesemester_tbl [label="{<table>semester_tbl|<cols>dept_id (INTEGER) [FK]\lperiod (INTEGER) [PK]\l}", shape=record];
+nodecourse_tbl [label="{<table>course_tbl|<cols>course_id (INTEGER) [PK]\ldept_id (INTEGER) [FK]\lperiod (INTEGER) [FK]\lname (VARCHAR)\lstaff (VARCHAR)\lects (INTEGER)\l}", shape=record];
+nodepublisher_tbl [label="{<table>publisher_tbl|<cols>publisher_id (INTEGER) [PK]\lname (VARCHAR)\l}", shape=record];
+nodebook_tbl [label="{<table>book_tbl|<cols>book_id (INTEGER) [PK]\lpublisher_id (INTEGER) [FK]\lcode (VARCHAR)\ltitle (VARCHAR)\lauthor (VARCHAR)\lpages (INTEGER)\lisbn (CHAR)\lavailable (BOOLEAN)\lcover (BLOB)\l}", shape=record];
+nodecourse_book_tbl [label="{<table>course_book_tbl|<cols>course_id (INTEGER) [FK]\lbook_id (INTEGER) [FK]\l}", shape=record];
+nodeuserstudent_book_tbl [label="{<table>userstudent_book_tbl|<cols>user_id (INTEGER) [FK]\lbook_id (INTEGER) [FK]\l}", shape=record];
+
+nodeuserstudent_tbl:cols -> nodeuser_tbl:table [label="user_id=user_id "];
+nodeuserstudent_tbl:cols -> nodegroup_tbl:table [label="group_id=group_id "];
+nodeuserstudent_tbl:cols -> nodedept_tbl:table [label="dept_id=dept_id "];
+nodeuserpublisher_tbl:cols -> nodeuser_tbl:table [label="user_id=user_id "];
+nodeuserpublisher_tbl:cols -> nodegroup_tbl:table [label="group_id=group_id "];
+nodeuserpublisher_tbl:cols -> nodepublisher_tbl:table [label="publisher_id=publisher_id "];
+nodeusersecretariat_tbl:cols -> nodeuser_tbl:table [label="user_id=user_id "];
+nodeusersecretariat_tbl:cols -> nodegroup_tbl:table [label="group_id=group_id "];
+nodeusersecretariat_tbl:cols -> nodedept_tbl:table [label="dept_id=dept_id "];
+nodefaq_tbl:cols -> nodegroup_tbl:table [label="group_id=group_id "];
+nodedept_tbl:cols -> nodeinst_tbl:table [label="inst_id=inst_id "];
+nodesemester_tbl:cols -> nodedept_tbl:table [label="dept_id=dept_id "];
+nodecourse_tbl:cols -> nodesemester_tbl:table [label="dept_id=dept_id,period "];
+nodecourse_tbl:cols -> nodesemester_tbl:table [label="period=dept_id,period "];
+nodebook_tbl:cols -> nodepublisher_tbl:table [label="publisher_id=publisher_id "];
+nodecourse_book_tbl:cols -> nodecourse_tbl:table [label="course_id=course_id "];
+nodecourse_book_tbl:cols -> nodebook_tbl:table [label="book_id=book_id "];
+nodeuserstudent_book_tbl:cols -> nodeuserstudent_tbl:table [label="user_id=user_id "];
+nodeuserstudent_book_tbl:cols -> nodebook_tbl:table [label="book_id=book_id "];
+}

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="ioankabi_eam" defaultIdMethod="native"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd">
+    
+    <table name="group_tbl" phpName="Group">
+        <column name="group_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="alias" type="varchar" size="16" required="true" />
+        <column name="name" type="varchar" size="40" required="true" />
+        <!--<column name="belongs_to" type="enum" valueSet="none, institution, department" required="true" />-->
+        <!--<column name="belongs_to" type="varchar" sqlType="ENUM('none', 'institution', 'department')" required="true" />-->
+    </table>
+    
+    <table name="user_tbl" phpName="User">
+        <column name="user_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <!--<column name="group_id" type="integer" required="true" />-->
+        <column name="username" type="varchar" size="16" required="true" />
+        <column name="password" type="char" size="64" required="true" />
+        <column name="email" type="varchar" size="40" required="true" />
+        <!--<column name="firstname" type="varchar" size="20" required="true" />
+        <column name="lastname" type="varchar" size="40" required="true" />-->
+        <!--<foreign-key foreignTable="group_tbl">
+            <reference local="group_id" foreign="group_id"/>
+        </foreign-key>-->
+        <unique>
+            <unique-column name="username" />
+        </unique>
+    </table>
+    
+    <table name="userstudent_tbl" phpName="UserStudent" reloadOnInsert="true" reloadOnUpdate="true" >
+        <column name="user_id" type="integer" required="true" primaryKey="true" />
+        <column name="group_id" type="integer" required="true" />
+        <column name="dept_id" type="integer" required="true" />
+        <column name="firstname" type="varchar" size="20" required="true" />
+        <column name="lastname" type="varchar" size="40" required="true" />
+        <foreign-key foreignTable="user_tbl">
+            <reference local="user_id" foreign="user_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="group_tbl">
+            <reference local="group_id" foreign="group_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="dept_tbl">
+            <reference local="dept_id" foreign="dept_id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="userpublisher_tbl" phpName="UserPublisher" reloadOnInsert="true" reloadOnUpdate="true" >
+        <column name="user_id" type="integer" required="true" primaryKey="true" />
+        <column name="group_id" type="integer" required="true" />
+        <column name="publisher_id" type="integer" required="true" />
+        <foreign-key foreignTable="user_tbl">
+            <reference local="user_id" foreign="user_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="group_tbl">
+            <reference local="group_id" foreign="group_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="publisher_tbl">
+            <reference local="publisher_id" foreign="publisher_id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="usersecretariat_tbl" phpName="UserSecretariat" reloadOnInsert="true" reloadOnUpdate="true" >
+        <column name="user_id" type="integer" required="true" primaryKey="true" />
+        <column name="group_id" type="integer" required="true" />
+        <column name="dept_id" type="integer" required="true" />
+        <column name="firstname" type="varchar" size="20" required="true" />
+        <column name="lastname" type="varchar" size="40" required="true" />
+        <foreign-key foreignTable="user_tbl">
+            <reference local="user_id" foreign="user_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="group_tbl">
+            <reference local="group_id" foreign="group_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="dept_tbl">
+            <reference local="dept_id" foreign="dept_id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="faq_tbl" phpName="Faq">
+        <column name="group_id" type="integer" required="true" primaryKey="true" />
+        <column name="index" type="integer" required="true" primaryKey="true" />
+        <column name="question" type="varchar" size="512" required="true" />
+        <column name="answer" type="longvarchar" required="true" />
+        <foreign-key foreignTable="group_tbl">
+            <reference local="group_id" foreign="group_id"/>
+        </foreign-key>
+    </table>
+
+    <table name="inst_tbl" phpName="Institution">
+        <column name="inst_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="60" required="true" />
+    </table>
+
+    <table name="dept_tbl" phpName="Department">
+        <column name="dept_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="inst_id" type="integer" required="true" />
+        <column name="name" type="varchar" size="60" required="true" />
+        <foreign-key foreignTable="inst_tbl">
+            <reference local="inst_id" foreign="inst_id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="semester_tbl" phpName="Semester">
+        <!--<column name="semester_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>-->
+        <column name="dept_id" type="integer" required="true" primaryKey="true" />
+        <column name="period" type="integer" required="true" primaryKey="true" />
+        <foreign-key foreignTable="dept_tbl">
+            <reference local="dept_id" foreign="dept_id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="course_tbl" phpName="Course">
+        <column name="course_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <!--<column name="semester_id" type="integer" required="true" />-->
+        <column name="dept_id" type="integer" required="true" />
+        <column name="period" type="integer" required="true" />
+        <column name="name" type="varchar" size="100" required="true" />
+        <column name="staff" type="varchar" size="100" required="true" />
+        <column name="ects" type="integer" required="true" />
+        <foreign-key foreignTable="semester_tbl">
+            <reference local="dept_id" foreign="dept_id"/>
+            <reference local="period" foreign="period"/>
+        </foreign-key>
+    </table>
+        
+    <table name="publisher_tbl" phpName="Publisher" >
+        <column name="publisher_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="60" required="true" />
+    </table>
+        
+    <table name="book_tbl" phpName="Book">
+        <column name="book_id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="publisher_id" type="integer" required="true" />
+        <column name="code" type="varchar" size="20" required="true" />
+        <column name="title" type="varchar" size="100" required="true" />
+        <column name="author" type="varchar" size="120" required="true" />
+        <column name="pages" type="integer" required="true" />
+        <column name="isbn" type="char" size="17" required="true" />
+        <column name="available" type="boolean" required="true" />
+        <column name="cover" type="blob" required="true" />
+        <foreign-key foreignTable="publisher_tbl">
+            <reference local="publisher_id" foreign="publisher_id"/>
+        </foreign-key>
+    </table>
+    
+    <table name="course_book_tbl" phpName="CourseBook" isCrossRef="true">
+        <column name="course_id" type="integer" required="true" primaryKey="true" />
+        <column name="book_id" type="integer" required="true" primaryKey="true" />
+        <foreign-key foreignTable="course_tbl">
+            <reference local="course_id" foreign="course_id" />
+        </foreign-key>
+        <foreign-key foreignTable="book_tbl">
+            <reference local="book_id" foreign="book_id" />
+        </foreign-key>
+    </table>
+
+    <table name="userstudent_book_tbl" phpName="UserStudentBook" isCrossRef="true">
+        <column name="user_id" type="integer" required="true" primaryKey="true" />
+        <column name="book_id" type="integer" required="true" primaryKey="true" />
+        <foreign-key foreignTable="userstudent_tbl">
+            <reference local="user_id" foreign="user_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="book_tbl">
+            <reference local="book_id" foreign="book_id" />
+        </foreign-key>
+    </table>
+                
+</database>

@@ -1,0 +1,381 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 76% arial,sans-serif;
+    text-align: center;
+}
+
+p {
+    margin: 0 10px 10px;
+}
+
+a {
+    /* padding: 10px; */
+    text-decoration: none;
+    color: #000000;
+}
+
+#content a {
+    padding: 0px;
+    text-decoration: underline;
+    color: blue;
+}
+
+div#header {
+    background-color: #F3F2ED;
+}
+
+div#header h1 {
+    height: 80px;
+    line-height: 80px;
+    margin: 0;
+    margin-left: 10px;
+}
+
+div#container {
+    text-align: left;
+}
+
+div#content p {
+    line-height: 1.4;
+}
+
+div#content li {
+    margin-bottom: 3px;
+}
+
+div#content ul li {
+    list-style-type: none;
+}
+
+div#content li label {
+    margin-top: 12px;
+}
+
+div#navigation {
+    background: #F6F0E0;
+    float: left;
+    width: 200px;
+}
+
+div#navigation ul {
+    margin: 15px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+div#navigation li {
+    line-height: 1.3em;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+div#extra {
+    background: #CCC8B3;
+}
+
+div#extra {
+    float: right;
+    width: 550px;
+}
+
+div#extra p {
+    margin: 5px;
+    font-weight: bold;
+}
+
+div#extra p#name {
+    /*font-size: 1.0em;*/
+    float: left;
+}
+
+div#extra p#profile {
+    /*font-size: 1.0em;*/
+    float: right;
+}
+
+div#extra a {
+    /*font-weight: bold;*/
+}
+
+div#footer {
+    background: #BFBD93;
+}
+
+div#footer p {
+    margin: 0;
+    padding: 5px 10px;
+}
+
+div#container {
+    width: 750px;
+    margin: 0 auto;
+}
+
+div#content {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    float: right;
+    width: 550px;
+}
+
+div#footer {
+    clear: both;
+    width: 100%;
+}
+
+p.error {
+    color: red;
+    font-weight: bold;
+}
+
+span.error {
+    color: red;
+    font-weight: bold;
+}
+
+p.notify {
+    color: green;
+    font-weight: bold;
+}
+
+span.notify {
+    color: green;
+    font-weight: bold;
+}
+
+div.breadcrumbs {
+    /*margin-top: 4px;*/
+    margin-left: 10px;
+    line-height: 1.5em;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+.faqcontainer {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.faqcontainer ul > div {
+    text-align: justify;
+}
+
+.coursecontainer {
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+table.bookinfo {
+    margin-left: 10px;
+}
+
+table.bookinfo td {
+    vertical-align: top;
+}
+
+table.bookinfo div.label {
+    text-align: left;    
+}
+
+div.bookinfo img {
+    /*width: 185px;*/
+    /*width: 240px;*/
+    height: 300px;
+    width: auto;
+    /*height: auto;*/
+    border: 1px solid black;
+}
+
+div.bookinfo br + p {
+    text-align: center;
+}
+
+table.searchresults {
+    margin-left: 10px;
+}
+
+table.searchresults img {
+    width: 120px;
+    height: auto;
+    border: 1px solid black;
+}
+
+table.searchresults table td {
+    vertical-align: top;
+}
+
+table.searchresults div.label {
+    text-align: right;    
+}
+
+div.resultscount {
+    margin-top: 20px;
+    margin-bottom: 17px;
+}
+
+
+div.home {
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+div.home p {
+    margin-left: 0px;
+    text-align: justify;
+}
+
+div.home p#image {
+    text-align: center;
+}
+
+div.home p > img {
+    height: 320px;
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+div.actions {
+    margin-left: 10px;
+}
+
+.actions p {
+    margin-left: 0px;
+}
+
+.actions #results {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.actions label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#student_id, #publisher_id, #book_id {
+    display: none;
+}
+
+div.userprofile {
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+.userprofile p {
+    margin-left: 0px;
+}
+
+.userprofile div {
+    margin-left: 0px;
+}
+
+.userprofile table {
+    margin-top: 15px;
+    margin-left: 0px;
+    width: 100%;
+    text-align: left;
+}
+
+.userprofile th {
+    text-align: left;
+}
+
+.userprofile td.avail, .userprofile th.avail {
+    width: 68px;
+    text-align: center;
+}
+
+div.publishers {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.publishers table {
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 540px;
+    text-align: left;
+}
+
+.publishers th {
+    text-align: left;
+}
+
+.publishers th.books, .publishers td.books {
+    width: 88px;
+    text-align: center;
+}
+
+div.publisherbooks {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.publisherbooks table {
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 540px;
+    text-align: left;
+}
+
+.publisherbooks th {
+    text-align: left;
+}
+
+.publisherbooks td.avail, .publisherbooks th.avail {
+    width: 68px;
+    text-align: center;
+}
+
+input#available, input#unavailable {
+    width: 95px;
+}
+
+input#declare, input#remove {
+    width: 75px;
+}
+
+div.courseinfo {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.courseinfo table {
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 540px;
+    text-align: left;
+}
+
+.courseinfo th {
+    text-align: left;
+}
+
+.courseinfo th.avail, .courseinfo td.avail {
+    width: 68px;
+    text-align: center;
+}
+
+.courseinfo table tr:nth-child(even) td, .userprofile table tr:nth-child(even) th {
+    background-color: #F3F2ED;
+}
+
+.publishers tr:nth-child(even) td {
+    background-color: #F3F2ED;
+}
+
+.publisherbooks table.books tr:nth-child(even) td, .publisherbooks table.books tr:nth-child(even) th {
+    background-color: #F3F2ED;
+}
+
+.userprofile table.books tr:nth-child(even) td, .userprofile table.books tr:nth-child(even) th {
+    background-color: #F3F2ED;
+}
